@@ -3,7 +3,6 @@
  */
 
 import debugLib from 'debug';
-import fetch, { Response } from 'node-fetch';
 import path from 'path';
 
 import { validate } from '../../../src/lib/validations/sql';
@@ -20,9 +19,6 @@ jest.spyOn( global.console, 'log' );
 
 const mockExit = jest.spyOn( process, 'exit' ).mockImplementation( () => {} );
 const ERROR_CODE = 1;
-
-jest.mock( 'node-fetch' );
-fetch.mockReturnValue( Promise.resolve( new Response( 'ok' ) ) );
 
 describe( 'lib/validations/sql', () => {
 	describe( 'it fails when the SQL has (using bad-sql-dump.sql)', () => {
